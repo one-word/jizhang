@@ -2,7 +2,7 @@
 FROM node:14
 
 # 安装指定版本的 Yarn
-RUN npm install -g yarn@1.22.5
+# RUN npm install -g yarn@1.22.5
 
 # 设置工作目录
 WORKDIR /app
@@ -11,7 +11,10 @@ WORKDIR /app
 COPY . .
 
 # 安装项目依赖
-RUN yarn install
+RUN yarn config set registry https://registry.npmmirror.com
+RUN yarn cache clean
+RUN yarn
+EXPOSE 3000
 
 # 启动命令
-CMD ["yarn", "serve"]
+ENTRYPOINT ["yarn", "serve"]
