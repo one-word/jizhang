@@ -17,4 +17,4 @@ RUN yarn
 EXPOSE 3000
 
 # 启动命令
-ENTRYPOINT ['NODE_OPTIONS="--max-old-space-size=256"', "yarn", "serve"]
+ENTRYPOINT ['NODE_OPTIONS="--max-old-space-size=512"', "yarn", "serve"]
